@@ -14,13 +14,13 @@ class AuteurType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class, [
+            ->add('Name', TextType::class, [
                 'required' => true,
                 'attr' => [
                     'placeholder' => 'Entrer un nouvel Auteur',
                 ],
             ])
-            ->add('birth', DateType::class, [
+            ->add('Birth', DateType::class, [
                 'widget' => 'single_text',
                 'format' => 'yyyy-MM-dd',
                 'required' => false,
