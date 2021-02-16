@@ -1,0 +1,14 @@
+<tr>
+    <td>{{ livre.title }}</td>
+    <td> {{ livre.datePublication is empty ? "" : livre.datePublication|date("Y") }} </td>
+    <td>{{ livre.auteur.name }}</td>
+    <td> {{ livre.auteur.birth is empty ? "" : livre.auteur.birth| date("m/d/Y") }} </td>
+    <td>{{ livre.categorie.topic}}</td>
+    <td>
+        <a href="{{ path('editbook',  {'id': livre.id}) }}"
+        class="btn btn-primary">
+        <i class="fas fa-edit"></i>
+        </a>
+        <a href="{{ path('delete', {'id': livre.id}) }}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+    </td>
+</tr>
