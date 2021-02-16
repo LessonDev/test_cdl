@@ -3,8 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Livre;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Data\SearchData;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method Livre|null find($id, $lockMode = null, $lockVersion = null)
@@ -19,32 +20,53 @@ class LivreRepository extends ServiceEntityRepository
         parent::__construct($registry, Livre::class);
     }
 
-    // /**
-    //  * @return Livre[] Returns an array of Livre objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     *  Récupère les livres avec une recherche
+     *  @return Livres
+     */
+    public function findSearch(SearchData $search): array
     {
-        return $this->createQueryBuilder('l')
-            ->andWhere('l.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('l.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        $query = $this->createQueryBuilder('l')
+            ->select('a', 'l', 'c')
+            ->join('l.auteur', 'a')
+            ->join('l.categorie', 'c');
 
-    /*
-    public function findOneBySomeField($value): ?Livre
-    {
-        return $this->createQueryBuilder('l')
-            ->andWhere('l.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        if (!empty($search->q)) {
+            $query = $query
+                ->andWhere('l.title LIKE :q')
+                ->setParameter('q', "%{$search->q}%");
+        }
+
+        if (!empty($search->datePublicationMin)) {
+            $query = $query
+                ->andWhere('l.datePublication >= :datePublicationMin')
+                ->setParameter(
+                    'datePublicationMin',
+                    $search->datePublicationMin
+                );
+        }
+
+        if (!empty($search->datePublicationMax)) {
+            $query = $query
+                ->andWhere('l.datePublication <= :datePublicationMax')
+                ->setParameter(
+                    'datePublicationMax',
+                    $search->datePublicationMax->modify('+1 year')
+                );
+        }
+
+        if (!empty($search->auteur)) {
+            $query = $query
+                ->andWhere('a.id IN (:auteur)')
+                ->setParameter('auteur', $search->auteur);
+        }
+
+        if (!empty($search->categorie)) {
+            $query = $query
+                ->andWhere('c.id IN (:categorie)')
+                ->setParameter('categorie', $search->categorie);
+        }
+
+        return $query->getQuery()->getResult();
     }
-    */
 }
