@@ -31,6 +31,11 @@ class CategorieController extends AbstractController
             $manager->persist($categorie);
             $manager->flush();
 
+            $this->addFlash(
+                'success',
+                "Catégorie <strong>{$categorie->getTopic()}</strong> a bien été ajouté"
+            );
+
             return $this->redirectToRoute('home');
         }
         return $this->render('categorie/index.html.twig', [

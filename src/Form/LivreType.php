@@ -34,7 +34,7 @@ class LivreType extends AbstractType
                 'required' => true,
                 'choice_label' => 'name',
                 'attr' => [
-                    'placeholder' => 'Entrez un nouvel Auteur',
+                    'placeholder' => 'Entrer un nouvel auteur',
                 ],
                 'class' => Auteur::class,
             ])
@@ -42,7 +42,7 @@ class LivreType extends AbstractType
                 'required' => true,
                 'choice_label' => 'topic',
                 'attr' => [
-                    'placeholder' => 'Entrez nouvelle Catégorie',
+                    'placeholder' => 'Entrer une nouvelle catégorie',
                 ],
                 'class' => Categorie::class,
             ]);
