@@ -24,10 +24,6 @@ class AuteurType extends AbstractType
                 'widget' => 'single_text',
                 'format' => 'yyyy-MM-dd',
                 'required' => false,
-                'attr' => [
-                    'placeholder' =>
-                        'Renseigner date de naissance d\'auteur dd-mm-yyyy ',
-                ],
             ]);
     }
 
