@@ -4,9 +4,12 @@ namespace App\Entity;
 
 use App\Repository\LivreRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=LivreRepository::class)
+ * @UniqueEntity( fields={"title"},message="Une telle Livre déjà existe" )
  */
 class Livre
 {
@@ -19,6 +22,7 @@ class Livre
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Vous devez renseigner le titre de livre")
      */
     private $title;
 
@@ -60,8 +64,9 @@ class Livre
         return $this->datePublication;
     }
 
-    public function setDatePublication(?\DateTimeInterface $datePublication): self
-    {
+    public function setDatePublication(
+        ?\DateTimeInterface $datePublication
+    ): self {
         $this->datePublication = $datePublication;
 
         return $this;
