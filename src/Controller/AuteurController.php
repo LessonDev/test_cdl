@@ -31,6 +31,11 @@ class AuteurController extends AbstractController
             $manager->persist($auteur);
             $manager->flush();
 
+            $this->addFlash(
+                'success',
+                "Auteur <strong>{$auteur->getName()}</strong> a bien été ajouté"
+            );
+
             return $this->redirectToRoute('home');
         }
         return $this->render('auteur/index.html.twig', [

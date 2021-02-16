@@ -15,7 +15,7 @@ class CategorieType extends AbstractType
         $builder->add('Topic', TextType::class, [
             'required' => true,
             'attr' => [
-                'placeholder' => 'Entre nouvelle catégorie',
+                'placeholder' => 'Entrer une nouvelle catégorie',
             ],
         ]);
     }

@@ -24,8 +24,10 @@ class LivreController extends AbstractController
         Request $request,
         EntityManagerInterface $manager
     ) {
+        $message = 'modifiée';
         if (!$livre) {
             $livre = new Livre();
+            $message = 'créer';
         }
 
         $form = $this->createForm(LivreType::class, $livre);
@@ -35,6 +37,13 @@ class LivreController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $manager->persist($livre);
             $manager->flush();
+
+            $this->addFlash(
+                'success',
+                "La livre <strong>{$livre->getTitle()}</strong> a bien été" .
+                    ' ' .
+                    $message
+            );
 
             return $this->redirectToRoute('home');
         }
