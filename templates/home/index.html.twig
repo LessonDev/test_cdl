@@ -3,6 +3,80 @@
 {% block title %}Test Symfony Le Comptoir des langues{% endblock %}
 
 {% block body %}
-<h1>Test Symfony</h1>
+
+<div class="container-fluid ">
+    <div class="row">
+        <div class="col-md-9 nav nav-pills nav-stacked anyClass" style="height:660px;
+        overflow-y: scroll;" >
+            <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Livre</th>
+                            <th>date</th>
+                            <th>Auteur</th>
+                            <th>date naissance</th>
+                            <th>Catégorie</th>
+                            <th>Tools</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for livre in livres %}
+                    <tr>
+                <td>{{ livre.title }}</td>
+                <td> {{ livre.datePublication is empty ? "" : livre.datePublication|date("Y") }} </td>
+                <td>{{ livre.auteur.name }}</td>
+                <td> {{ livre.auteur.birth is empty ? "" : livre.auteur.birth| date("m/d/Y") }} </td>
+                <td>{{ livre.categorie.topic}}</td>
+                <td>
+                    <a href=""
+                    class="btn btn-primary">
+                    <i class="fas fa-edit"></i>
+                    </a>
+                    <a href="" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                </td>
+                </tr>
+                    {% endfor %}
+                    </tbody>
+            </table>
+        </div>
+
+        <div class="col-md-3 card border p-3">
+            <div class="col-md-12">
+
+                {{ form_start(form) }}
+                <div class="col-md-12">
+                    <div class="row">
+                        <h4>Titre de Livre</h4>
+                        {{ form_row(form.q)}}
+                            <h4>Date</h4>
+                                <div class="col-md-6">
+                                    {{ form_row(form.datePublicationMin) }}
+                                </div>
+                                <div class="col-md-6">
+                                    {{ form_row(form.datePublicationMax) }}
+                                </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 overflow-auto" >
+                    <h4>Auteurs</h4>
+                    {{ form_row(form.auteur) }}
+                    </div>
+
+                    <div class="col-md-6">
+                    <h4>Categorie</h4>
+                    {{ form_row(form.categorie) }}
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">Filtrer</button>
+                {{ form_end(form) }}
+
+            </div>
+        </div>
+
+    </div>
+</div>
 
 {% endblock %}
