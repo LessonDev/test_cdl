@@ -29,7 +29,8 @@ class LivreRepository extends ServiceEntityRepository
         $query = $this->createQueryBuilder('l')
             ->select('a', 'l', 'c')
             ->join('l.auteur', 'a')
-            ->join('l.categorie', 'c');
+            ->join('l.categorie', 'c')
+            ->orderBy('l.title', 'ASC');
 
         if (!empty($search->q)) {
             $query = $query

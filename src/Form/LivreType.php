@@ -20,30 +20,23 @@ class LivreType extends AbstractType
             ->add('Title', TextType::class, [
                 'required' => true,
                 'attr' => [
-                    'placeholder' => 'Renseigner le titre de livre',
+                    'placeholder' => 'Renseignez le titre de livre',
                 ],
             ])
             ->add('DatePublication', DateType::class, [
                 'required' => false,
-                'attr' => [
-                    'placeholder' => "Entrez l'année d'édition YYYY",
-                ],
                 'widget' => 'single_text',
             ])
             ->add('Auteur', EntityType::class, [
                 'required' => true,
                 'choice_label' => 'name',
-                'attr' => [
-                    'placeholder' => 'Entrer un nouvel auteur',
-                ],
+                'placeholder' => 'Entrer un nouvel auteur',
                 'class' => Auteur::class,
             ])
             ->add('Categorie', EntityType::class, [
                 'required' => true,
                 'choice_label' => 'topic',
-                'attr' => [
-                    'placeholder' => 'Entrer une nouvelle catégorie',
-                ],
+                'placeholder' => 'Entrer une nouvelle catégorie',
                 'class' => Categorie::class,
             ]);
     }
