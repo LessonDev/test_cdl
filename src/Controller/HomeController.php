@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Livre;
 use App\Data\SearchData;
 use App\Form\SearchForm;
 use App\Repository\LivreRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -29,5 +31,24 @@ class HomeController extends AbstractController
             'livres' => $livres,
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * Permets de supprimer une livre
+     * @Route("/delete/{id}", name="delete")
+     *
+     * @return Response
+     */
+    public function delete(Livre $livre, EntityManagerInterface $manager)
+    {
+        $manager->remove($livre);
+        $manager->flush();
+
+        $this->addFlash(
+            'success',
+            "La livre <strong>{$livre->getTitle()}</strong> a bien été suprimer"
+        );
+
+        return $this->redirectToRoute('home');
     }
 }
