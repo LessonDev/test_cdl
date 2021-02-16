@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Édition Livre{% endblock %}
+
+{% block body %}
+
+  {{ form_start(form) }}
+
+  {{ form_widget(form) }}
+  <button type="submit" class="btn btn-primary w-100">Enregistrer les modifications</button>
+  {{ form_end(form) }}
+
+{% endblock %}
+
