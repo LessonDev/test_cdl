@@ -17,20 +17,20 @@ class LivreType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', TextType::class, [
+            ->add('Title', TextType::class, [
                 'required' => true,
                 'attr' => [
                     'placeholder' => 'Renseigner le titre de livre',
                 ],
             ])
-            ->add('datePublication', DateType::class, [
+            ->add('DatePublication', DateType::class, [
                 'required' => false,
                 'attr' => [
                     'placeholder' => "Entrez l'année d'édition YYYY",
                 ],
                 'widget' => 'single_text',
             ])
-            ->add('auteur', EntityType::class, [
+            ->add('Auteur', EntityType::class, [
                 'required' => true,
                 'choice_label' => 'name',
                 'attr' => [
@@ -38,7 +38,7 @@ class LivreType extends AbstractType
                 ],
                 'class' => Auteur::class,
             ])
-            ->add('categorie', EntityType::class, [
+            ->add('Categorie', EntityType::class, [
                 'required' => true,
                 'choice_label' => 'topic',
                 'attr' => [
