@@ -1,0 +1,37 @@
+{{ form_start(form) }}
+
+        <div class="row">
+            <div class="col-md-12" >
+                <h4>Titre de Livre</h4>
+            </div>
+            <div class="col-md-12" >
+                {{ form_row(form.q)}}
+            </div>
+        </div>
+
+        <div class="row">
+         <div class="col-md-12" >
+            <h4>Date</h4>
+        </div>
+            <div class="col-md-6">
+                {{ form_row(form.datePublicationMin) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_row(form.datePublicationMax) }}
+           </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6" >
+            <h4>Auteurs</h4>
+            {{ form_row(form.auteur) }}
+            </div>
+
+            <div class="col-md-6">
+            <h4>Categorie</h4>
+            {{ form_row(form.categorie) }}
+            </div>
+        </div>
+
+    <button type="submit" class="btn btn-primary w-100">Filtrer</button>
+{{ form_end(form) }}
