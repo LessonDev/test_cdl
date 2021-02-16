@@ -30,7 +30,7 @@ class LivreRepository extends ServiceEntityRepository
             ->select('a', 'l', 'c')
             ->join('l.auteur', 'a')
             ->join('l.categorie', 'c')
-            ->orderBy('l.title', 'ASC');
+            ->orderBy('l.id', 'ASC');
 
         if (!empty($search->q)) {
             $query = $query

@@ -102,6 +102,9 @@ class Auteur
 
     public function __toString()
     {
+        if (is_null($this->name)) {
+            return 'Aucune auteur';
+        }
         return $this->name;
     }
 }
