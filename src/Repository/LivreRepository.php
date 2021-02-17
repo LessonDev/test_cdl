@@ -52,7 +52,7 @@ class LivreRepository extends ServiceEntityRepository
                 ->andWhere('l.datePublication <= :datePublicationMax')
                 ->setParameter(
                     'datePublicationMax',
-                    $search->datePublicationMax->modify('+1 year')
+                    $search->datePublicationMax->modify('+1 year')->format('Y')
                 );
         }
 
