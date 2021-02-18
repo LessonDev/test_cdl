@@ -5,6 +5,8 @@ namespace App\Repository;
 use App\Entity\Livre;
 use App\Data\SearchData;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\PaginatorInterface;
+use Knp\Bundle\PaginatorBundle\Pagination\SlidingPagination;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
@@ -15,16 +17,19 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
  */
 class LivreRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
-    {
+    public function __construct(
+        ManagerRegistry $registry,
+        PaginatorInterface $paginator
+    ) {
         parent::__construct($registry, Livre::class);
+        $this->paginator = $paginator;
     }
 
     /**
      *  Récupère les livres avec une recherche
-     *  @return Livres
+     *  @return SlidingPagination
      */
-    public function findSearch(SearchData $search): array
+    public function findSearch(SearchData $search): SlidingPagination
     {
         $query = $this->createQueryBuilder('l')
             ->select('a', 'l', 'c')
@@ -68,6 +73,8 @@ class LivreRepository extends ServiceEntityRepository
                 ->setParameter('categorie', $search->categorie);
         }
 
-        return $query->getQuery()->getResult();
+        //return $query->getQuery()->getResult();
+        $query = $query->getQuery();
+        return $this->paginator->paginate($query, $search->page, 6);
     }
 }
