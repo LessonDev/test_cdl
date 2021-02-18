@@ -12,11 +12,11 @@
             <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>Livre</th>
-                            <th>Date</th>
-                            <th>Auteur</th>
-                            <th>Date naissance</th>
-                            <th>Catégorie</th>
+                            <th>{{ knp_pagination_sortable (livres, 'Titre', 'l.title') }}</th>
+                            <th>{{ knp_pagination_sortable (livres, 'Date', 'l.datePublication') }}</th>
+                            <th>{{ knp_pagination_sortable (livres, 'Auteur', 'a.name') }}</th>
+                            <th>{{ knp_pagination_sortable (livres, 'Date naissance', 'a.birth') }}</th>
+                            <th>{{ knp_pagination_sortable (livres, 'Catégorie', 'c.topic') }}</th>
                             <th>Edit/Sup</th>
                         </tr>
                     </thead>
@@ -26,6 +26,9 @@
                     {% endfor %}
                     </tbody>
             </table>
+            <div class="mt-4">
+             {{ knp_pagination_render(livres) }}
+            </div>
         </div>
 
         <div class="col-md-3 card border p-3">
