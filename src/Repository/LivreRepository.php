@@ -33,7 +33,7 @@ class LivreRepository extends ServiceEntityRepository
     {
         $query = $this->createQueryBuilder('l')
             ->select('a', 'l', 'c')
-            ->join('l.auteur', 'a')
+            ->leftjoin('l.auteur', 'a')
             ->join('l.categorie', 'c')
             ->orderBy('l.id', 'ASC');
 
@@ -54,10 +54,12 @@ class LivreRepository extends ServiceEntityRepository
 
         if (!empty($search->datePublicationMax)) {
             $query = $query
-                ->andWhere('l.datePublication <= :datePublicationMax')
+                ->andWhere(
+                    "DATE_FORMAT(l.datePublication,'%Y') <= :datePublicationMax"
+                )
                 ->setParameter(
                     'datePublicationMax',
-                    $search->datePublicationMax->modify('+1 year')->format('Y')
+                    $search->datePublicationMax
                 );
         }
 
