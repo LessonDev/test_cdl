@@ -1,8 +1,13 @@
 <tr>
     <td>{{ livre.title }}</td>
     <td> {{ livre.datePublication is empty ? "" : livre.datePublication|date("Y") }} </td>
-    <td>{{ livre.auteur.name }}</td>
-    <td> {{ livre.auteur.birth is empty ? "" : livre.auteur.birth| date("m/d/Y") }} </td>
+     {% if livre.auteur %}
+        <td>{{ livre.auteur.name}}</td>
+        <td>{{ livre.auteur.birth is empty ? "" : livre.auteur.birth| date("m/d/Y") }} </td>
+    {% else %}
+        <td>{{""}}</td>
+        <td>{{""}} </td>
+    {% endif %}
     <td>{{ livre.categorie.topic}}</td>
     <td>
         <a href="{{ path('editbook',  {'id': livre.id}) }}"

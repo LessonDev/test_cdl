@@ -28,7 +28,7 @@ class LivreType extends AbstractType
                 'widget' => 'single_text',
             ])
             ->add('Auteur', EntityType::class, [
-                'required' => true,
+                'required' => false,
                 'choice_label' => 'name',
                 'placeholder' => 'Entrer un nouvel auteur',
                 'class' => Auteur::class,
