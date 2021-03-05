@@ -1,5 +1,5 @@
 # test_CDL
-Test Symfony 4
+Test Symfony 4, 5
 
 
 * fork le projet sur votre compte github
