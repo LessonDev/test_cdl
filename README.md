@@ -10,7 +10,7 @@ Test Symfony 4, 5
 
 * Renvoyer le lien de votre travail au service de recrutement + f.francois@langues.fr 
 
-Test à réaliser
+Projet test - Village Library
 
 Vous êtes le nouveau développeur de la bibliothèque de votre village comptant 100 habitants. Afin
 de faciliter la vie de votre bibliothécaire, vous décidez de lui créer un module en Symfony4 de type
