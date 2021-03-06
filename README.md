@@ -33,3 +33,5 @@ Merci de gérer le contenu avec des EntityType
 Les champs « date » n’acceptent que des dates.
 
 Je ne veux pas de data en dur dans les filtres => tous dois être récupéré de la bdd.
+
+lutfaliyev.farid@gmail.com
