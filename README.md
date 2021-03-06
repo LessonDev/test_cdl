@@ -3,6 +3,8 @@ Test Symfony 4, 5
 
 Projet test - Village Library
 
+Condition
+
 Vous êtes le nouveau développeur de la bibliothèque de votre village comptant 100 habitants. Afin
 de faciliter la vie de votre bibliothécaire, vous décidez de lui créer un module en Symfony4 de type
 CRUD. Elle vous a laissé le tableau ci-dessus pour commencer à remplir votre base de données.
@@ -22,7 +24,7 @@ livre et catégorie ne peuvent pas etre NULL.
 
 3/ La bibliothécaire veut pouvoir rechercher tous les livres dont la catégorie est "roman" ou
 "manga" et dont la date de naissance de l'auteur est supérieure à 1970
- Je veux une recherche de livre « avancée » avec la possibilité d’avoir deux catégories ou plus
+Je veux une recherche de livre « avancée » avec la possibilité d’avoir deux catégories ou plus
 sélectionnées en même temps + une date (qui sera : « A partir de XXXX année » // le champ
 date peut rester vide, ce qui veut dire « toutes les date »)
 
