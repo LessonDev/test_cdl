@@ -1,0 +1,1 @@
+web: $(composer config btn-dir)/heroku-php-apache2 public/
