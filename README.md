@@ -1,16 +1,9 @@
 # test_CDL
 Test Symfony 4, 5
 
+Projet test - Village Library
 
-* fork le projet sur votre compte github
-
-* Démarrer le projet (composer i) (symfony serve)
-  
-* suivre les [instructions](https://github.com/lecomptoirdeslangues/test_CDL/blob/main/instruction.pdf)
-
-* Renvoyer le lien de votre travail au service de recrutement + f.francois@langues.fr 
-
-Test à réaliser
+Condition
 
 Vous êtes le nouveau développeur de la bibliothèque de votre village comptant 100 habitants. Afin
 de faciliter la vie de votre bibliothécaire, vous décidez de lui créer un module en Symfony4 de type
@@ -31,7 +24,7 @@ livre et catégorie ne peuvent pas etre NULL.
 
 3/ La bibliothécaire veut pouvoir rechercher tous les livres dont la catégorie est "roman" ou
 "manga" et dont la date de naissance de l'auteur est supérieure à 1970
- Je veux une recherche de livre « avancée » avec la possibilité d’avoir deux catégories ou plus
+Je veux une recherche de livre « avancée » avec la possibilité d’avoir deux catégories ou plus
 sélectionnées en même temps + une date (qui sera : « A partir de XXXX année » // le champ
 date peut rester vide, ce qui veut dire « toutes les date »)
 
@@ -40,3 +33,5 @@ Merci de gérer le contenu avec des EntityType
 Les champs « date » n’acceptent que des dates.
 
 Je ne veux pas de data en dur dans les filtres => tous dois être récupéré de la bdd.
+
+lutfaliyev.farid@gmail.com
